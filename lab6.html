@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array and forEach Loop Example</title>
+    <style>
+        .output { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Array and forEach Loop Example</h2>
+    <div id="output" class="output"></div>
+
+    <script>
+        // Create an array of numbers
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // Get the output div element
+        const outputDiv = document.getElementById('output');
+
+        // Initialize an empty string to store the result
+        let result = '<h3>Squares of the Numbers:</h3><ul>';
+
+        // Use forEach loop to iterate through the array
+        numbers.forEach(function(number) {
+            // Calculate the square of each number
+            const square = number * number;
+
+            // Append the result to the result string
+            result += `<li>${number} squared is ${square}</li>`;
+        });
+
+        // Close the unordered list tag
+        result += '</ul>';
+
+        // Display the result in the output div
+        outputDiv.innerHTML = result;
+    </script>
+</body>
+</html>
