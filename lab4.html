@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Even Numbers</title>
+</head>
+<body>
+    <h1>Sum of All Even Numbers from 1 to 25</h1>
+    <p id="result"></p>
+
+    <script>
+        // Initialize a variable to store the sum
+        let sum = 0;
+
+        // Loop through numbers from 1 to 25
+        for (let i = 1; i <= 25; i++) {
+            // Check if the number is even
+            if (i % 2 === 0) {
+                // Add the even number to the sum
+                sum += i;
+            }
+        }
+
+        // Display the sum in the paragraph element with id "result"
+        document.getElementById("result").textContent = "The sum of all even numbers from 1 to 25 is: " + sum;
+    </script>
+</body>
+</html>
