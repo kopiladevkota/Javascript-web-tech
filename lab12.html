@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+    
+        .slider {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            background-color: #fff;
+        }
+        .slides {
+            display: flex;
+            width: calc(500px * 4);
+            transition: transform 0.5s ease-in-out;
+        }
+        .slides img {
+            width: 500px;
+            height: 300px;
+            object-fit: cover;
+            flex-shrink: 0; /* Ensure the image covers the entire container */
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .controls button {
+            background-color: white;
+            border: none;
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider">
+        <div class="slides">
+            <img src="C:\Users\Kopila-Devkota\Desktop\kopila.jpg" alt="Image 1">
+            <img src="C:\Users\Kopila-Devkota\Pictures\Saved Pictures\calvinharis.jpg" alt="Image 2">
+            <img src="" alt="Image 3">
+            
+        </div>
+        <div class="controls">
+            <button id="prevBtn">❮ Prev</button>
+            <button id="nextBtn">Next ❯</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const $slides = $('.slides');
+            const $images = $slides.find('img');
+            const totalImages = $images.length;
+            let currentIndex = 0;
+
+            $('#nextBtn').click(function() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                $slides.css('transform', 'translateX(' + (-currentIndex * 500) + 'px)');
+            });
+
+            $('#prevBtn').click(function() {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                $slides.css('transform', 'translateX(' + (-currentIndex * 500) + 'px)');
+            });
+        });
+    </script>
+
+</body>
+</html>
