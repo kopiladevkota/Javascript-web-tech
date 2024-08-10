@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Operations</title>
+</head>
+<body>
+
+    <h1>Cookie Operations</h1>
+
+    <label for="cookieName">Cookie Name:</label>
+    <input type="text" id="cookieName" placeholder="Enter cookie name">
+    <br><br>
+
+    <label for="cookieValue">Cookie Value:</label>
+    <input type="text" id="cookieValue" placeholder="Enter cookie value">
+    <br><br>
+
+    <label for="cookieDays">Expiry Days (Optional):</label>
+    <input type="number" id="cookieDays" placeholder="Enter days">
+    <br><br>
+
+    <button onclick="handleSetCookie()">Set Cookie</button>
+    <button onclick="handleGetCookie()">Get Cookie</button>
+    <button onclick="handleDeleteCookie()">Delete Cookie</button>
+    <br><br>
+
+    <p id="output"></p>
+
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name.trim() + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            const nameEQ = name.trim() + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim(); // Trim whitespace from cookie
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Function to delete a cookie by name
+        function deleteCookie(name) {
+            document.cookie = name.trim() + "=; Max-Age=-99999999; path=/;";
+        }
+
+        // Handler for setting a cookie
+        function handleSetCookie() {
+            const name = document.getElementById('cookieName').value;
+            const value = document.getElementById('cookieValue').value;
+            const days = document.getElementById('cookieDays').value;
+            setCookie(name, value, days);
+            document.getElementById('output').textContent = `Cookie "${name}" has been set.`;
+        }
+
+        // Handler for getting a cookie
+        function handleGetCookie() {
+            const name = document.getElementById('cookieName').value;
+            const value = getCookie(name);
+            if (value) {
+                document.getElementById('output').textContent = `Value of cookie "${name}" is: ${value}`;
+            } else {
+                document.getElementById('output').textContent = `Cookie "${name}" not found.`;
+            }
+        }
+
+        // Handler for deleting a cookie
+        function handleDeleteCookie() {
+            const name = document.getElementById('cookieName').value;
+            deleteCookie(name);
+            document.getElementById('output').textContent = `Cookie "${name}" has been deleted.`;
+        }
+    </script>
+
+</body>
+</html>
