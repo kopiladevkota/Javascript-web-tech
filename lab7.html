@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <style>
+        .error { color: red; font-size: 0.9em; }
+        .success { color: green; font-size: 1em; margin-top: 10px; }
+        .form-field { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Email Validation Form</h2>
+    <form id="emailForm" onsubmit="return validateEmail()">
+        <div class="form-field">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email">
+            <div id="emailError" class="error"></div>
+        </div>
+
+        <input type="submit" value="Submit">
+        <div id="successMessage" class="success"></div>
+    </form>
+
+    <script>
+        function validateEmail() {
+            // Clear previous error and success messages
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("successMessage").textContent = "";
+
+            // Get the email input value
+            const email = document.getElementById("email").value;
+
+            // Define the regular expression for validating email addresses
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Validate the email address
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Please enter a valid email address.";
+                // Return false to prevent form submission
+                return false;
+            }
+
+            // Display a success message if the email is valid
+            document.getElementById("successMessage").textContent = "Email is valid!";
+
+            // Return false to prevent actual form submission for demonstration purposes
+            return false;
+        }
+    </script>
+</body>
+</html>
