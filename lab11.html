@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Chaining with slideUp and slideDown</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            margin-top: 20px;
+        }
+        p{
+            color: white
+        }
+    </style>
+</head>
+<body>
+
+    <h2>jQuery Chaining Example</h2>
+    <button id="toggleButton">Toggle Box</button>
+
+    <div id="box">
+        <p>Hi! This is Kopila Toggling the box.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#toggleButton').click(function() {
+                $('#box').slideUp(1000).slideDown(1000);
+            });
+        });
+    </script>
+
+</body>
+</html>
