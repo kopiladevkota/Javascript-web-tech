@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Selection with jQuery by Kopila</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h2>Select Your Favorite Subject:</h2>
+    <select id="Subjects">
+        <option value="SAD">System Analysis and Design</option>
+        <option value=" WEB">Web Technology</option>
+        <option value="DAA">Design & Analysis of Algorithm</option>
+        <option value="SM">Simulation & Modeling</option>
+        <option value="cryptography">Cryptography</option>
+    </select>
+
+    <button id="getSelectedValue">Get Selected Value and Text</button>
+
+    <p id="output"></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#getSelectedValue').click(function() {
+                // Get the selected value
+                const selectedValue = $('#Subjects').val();
+                
+                // Get the selected text
+                const selectedText = $('#Subjects option:selected').text();
+                
+                // Display the result
+                $('#output').text('Selected Value: ' + selectedValue + ', Selected Text: ' + selectedText);
+            });
+        });
+    </script>
+
+</body>
+</html>
